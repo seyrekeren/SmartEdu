@@ -1,5 +1,5 @@
 const express = require('express');
-
+const pageRoute = require('../SmarEduNew/routes/pageRoute');
 const app = express();
 
 //Template Engine
@@ -18,15 +18,7 @@ app.listen(port, () => {
 });
 
 
-app.get('/', (req, res) => {
-    res.status(200).render('index', {
-        page_name: "index"
-    });
-});
+app.use('/',pageRoute);;
 
-app.get('/about', (req, res) => {
-    res.status(200).render('about', {
-        page_name: 'about',
-    });
-});
+
 
