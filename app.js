@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const pageRoute = require('../SmarEduNew/routes/pageRoute');
 const courseRoute = require('../SmarEduNew/routes/courseRoute');
+const bodyParser = require('express');
 const app = express();
 
 
@@ -17,8 +18,13 @@ app.set("view engine", "ejs");
 
 //Middlewares
 app.use(express.static("public"));
+app.use(bodyParser.json()) // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
 
+
+app.use('/', pageRoute);
+app.use('/courses',courseRoute);
 
 
 const port = 3000;
@@ -27,8 +33,6 @@ app.listen(port, () => {
 });
 
 
-app.use('/', pageRoute);
-app.use('courses',courseRoute);
 
 
 
