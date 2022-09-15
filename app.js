@@ -1,8 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('express');
 const pageRoute = require('../SmarEduNew/routes/pageRoute');
 const courseRoute = require('../SmarEduNew/routes/courseRoute');
-const bodyParser = require('express');
+const categoryRoute = require('../SmarEduNew/routes/categoryRoute');
+
 const app = express();
 
 
@@ -25,6 +27,7 @@ app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-
 
 app.use('/', pageRoute);
 app.use('/courses',courseRoute);
+app.use('/categories',categoryRoute);
 
 
 const port = 3000;
