@@ -11,7 +11,12 @@ const app = express();
 
 
 //connect db
-mongoose.connect('mongodb://localhost/smartEdu-db').then(() => {
+mongoose.connect('mongodb://localhost/smartEdu-db',{
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
+}).then(() => {
     console.log('DB connected');
 });
 
