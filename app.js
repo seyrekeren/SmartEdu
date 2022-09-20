@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('express');
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
 const pageRoute = require('../SmarEduNew/routes/pageRoute');
 const courseRoute = require('../SmarEduNew/routes/courseRoute');
 const categoryRoute = require('../SmarEduNew/routes/categoryRoute');
@@ -38,6 +39,7 @@ app.use(
       secret: 'my_keyboard_cat', // Buradaki texti değiştireceğiz.
       resave: false,
       saveUninitialized: true,
+      store: MongoStore.create({ mongoUrl: 'mongodb://localhost/smartEdu-db' })
     })
   );
 
