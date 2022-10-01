@@ -6,10 +6,7 @@ exports.createCourse = async (req, res) => {
     try {
         const course = await Course.create(req.body)
         if (!course) console.log('not created')
-        res.status(201).json({
-            status: 'success',
-            course
-        });
+        res.status(201).redirect('/courses');
     } catch (error) {
 
         console.log(error)
@@ -30,7 +27,7 @@ exports.getAllCourses = async (req, res) => {
         if (categorySlug) {
             filter = { category: category._id }
         }
-        const courses = await Course.find(filter);
+        const courses = await Course.find(filter).sort('-createdAt');//başına - koymamız önemli
 
 
         const categories = await Category.find();
