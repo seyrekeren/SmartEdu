@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
     name: {
-        type: String,   
+        type: String,
         required: true
     },
     email: {
@@ -17,11 +17,15 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    role:{
+    role: {
         type: String,
-        enum:["student", "teacher", "admin"],//bu değerleri alabilir
+        enum: ["student", "teacher", "admin"],//bu değerleri alabilir
         default: "student"
-      }
+    },
+      courses: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Course'
+    }]
 
 });
 UserSchema.pre('save', function (next) {

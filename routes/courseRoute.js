@@ -8,5 +8,6 @@ router.route('/').post(roleMiddleware(["teacher", "admin"]), courseController.cr
 //burada kullanıcı eğer teacher ya da admin değilse kurs oluşturamaz //amcana sor nasıl postmanla denersin diye
 router.route('/').get(courseController.getAllCourses);
 router.route('/:slug').get(courseController.getCourse);
+router.route('/enroll').post(courseController.enrollCourse);
 
 module.exports = router;
