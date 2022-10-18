@@ -9,3 +9,4 @@ module.exports = (roles) => {
     }
 }
 //mesela kurs oluşturmak için birinin roles olarak öğretmen ya da admin  olması lazım roles yetkinlik ona göre alınıcak ki 
+//next next
